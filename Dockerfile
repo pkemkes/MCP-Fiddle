@@ -3,8 +3,8 @@ FROM node:25-alpine AS build
 
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
-RUN npm install
+COPY package.json package-lock.json ./
+RUN npm ci
 
 COPY . .
 
@@ -19,8 +19,8 @@ FROM node:25-alpine AS runtime
 
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
-RUN npm install --omit=dev
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
 
 # Copy built frontend assets
 COPY --from=build /app/dist ./dist
