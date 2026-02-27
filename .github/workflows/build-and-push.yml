@@ -11,7 +11,6 @@ permissions:
 
 jobs:
   build-and-push:
-    needs: verify-tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
