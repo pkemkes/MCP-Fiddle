@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2a2d3a #0f1117;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f1117;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2a2d3a;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3d4a;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-fiddle-accent hover:bg-fiddle-accent-hover text-white font-medium
+           px-4 py-2 rounded-lg transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-fiddle-panel hover:bg-fiddle-border text-gray-300 font-medium
+           px-4 py-2 rounded-lg border border-fiddle-border transition-colors duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-medium
+           px-4 py-2 rounded-lg transition-colors duration-150;
+  }
+
+  .input-field {
+    @apply bg-fiddle-bg border border-fiddle-border rounded-lg px-3 py-2 text-sm text-gray-100
+           placeholder-gray-500 focus:outline-none focus:border-fiddle-accent focus:ring-1
+           focus:ring-fiddle-accent transition-colors duration-150 w-full;
+  }
+
+  .panel {
+    @apply bg-fiddle-panel border border-fiddle-border rounded-xl;
+  }
+
+  .panel-header {
+    @apply px-4 py-3 border-b border-fiddle-border font-semibold text-sm text-gray-300 uppercase tracking-wider;
+  }
+
+  .status-dot {
+    @apply w-2 h-2 rounded-full inline-block;
+  }
+
+  .status-connected {
+    @apply status-dot bg-fiddle-success animate-pulse;
+  }
+
+  .status-disconnected {
+    @apply status-dot bg-fiddle-muted;
+  }
+
+  .status-connecting {
+    @apply status-dot bg-fiddle-warning animate-pulse;
+  }
+}

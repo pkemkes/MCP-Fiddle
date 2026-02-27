@@ -1,0 +1,33 @@
+# Stage 1 — Build
+FROM node:25-alpine AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+RUN npm install
+
+COPY . .
+
+# Build frontend (Vite) and backend (TypeScript)
+RUN npm run build
+
+# Stage 2 — Runtime
+FROM node:25-alpine AS runtime
+
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+RUN npm install --omit=dev
+
+# Copy built frontend assets
+COPY --from=build /app/dist ./dist
+
+# Copy compiled backend
+COPY --from=build /app/dist-server ./dist-server
+
+EXPOSE 3000
+
+ENV NODE_ENV=production
+ENV PORT=3000
+
+CMD ["node", "dist-server/index.js"]
