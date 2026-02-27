@@ -1,6 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-fiddle-bg: #0f1117;
+  --color-fiddle-panel: #1a1d27;
+  --color-fiddle-border: #2a2d3a;
+  --color-fiddle-accent: #6366f1;
+  --color-fiddle-accent-hover: #818cf8;
+  --color-fiddle-success: #22c55e;
+  --color-fiddle-error: #ef4444;
+  --color-fiddle-warning: #f59e0b;
+  --color-fiddle-muted: #6b7280;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
 
 @layer base {
   * {
@@ -63,14 +74,14 @@
   }
 
   .status-connected {
-    @apply status-dot bg-fiddle-success animate-pulse;
+    @apply w-2 h-2 rounded-full inline-block bg-fiddle-success animate-pulse;
   }
 
   .status-disconnected {
-    @apply status-dot bg-fiddle-muted;
+    @apply w-2 h-2 rounded-full inline-block bg-fiddle-muted;
   }
 
   .status-connecting {
-    @apply status-dot bg-fiddle-warning animate-pulse;
+    @apply w-2 h-2 rounded-full inline-block bg-fiddle-warning animate-pulse;
   }
 }

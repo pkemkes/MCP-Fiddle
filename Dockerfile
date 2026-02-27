@@ -8,6 +8,9 @@ RUN npm install
 
 COPY . .
 
+ARG VITE_APP_VERSION=0.0.0
+ENV VITE_APP_VERSION=${VITE_APP_VERSION}
+
 # Build frontend (Vite) and backend (TypeScript)
 RUN npm run build
 

@@ -68,7 +68,7 @@ export default function App() {
             <span className="text-gray-200">Fiddle</span>
           </h1>
           <span className="text-[10px] text-gray-500 bg-fiddle-bg px-2 py-0.5 rounded-full">
-            v1.0.0
+            v{import.meta.env.VITE_APP_VERSION}
           </span>
         </div>
         <div className="flex items-center gap-3">
